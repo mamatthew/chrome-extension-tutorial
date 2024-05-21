@@ -8,7 +8,8 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
 function updateAdBlocking() {
   if (blocking) {
-    fetch("ad_blocking_rules.json")
+    const url = chrome.runtime.getURL("ad_blocking_rules.json");
+    fetch(url)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
